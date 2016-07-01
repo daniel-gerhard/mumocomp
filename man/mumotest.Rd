@@ -38,7 +38,7 @@ K <- rbind("Thromb: B - S"=c(0,1,0,0,0,0,0,0,0),
            "TRAP: H - S"  =c(0,0,0,0,0,0,0,0,1))
 
 ### Resampling of contrast test statistics
-mm <-  mumotest(list(m1, m2, m3), K, B=10000)
+mm <- mumotest(list(m1, m2, m3), K, B=10000)
 
 ### Adjusted p-values
 summary(mm)
