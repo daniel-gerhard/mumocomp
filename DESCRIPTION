@@ -1,0 +1,12 @@
+Package: mumocomp
+Type: Package
+Title: Siultaneous Inference in Multiple Models
+Version: 0.0-1
+Date: 2016-07-01
+Author: Daniel Gerhard
+Maintainer: Daniel Gerhard <00gerhard@gmail.com>
+Description: Simultaneous tests for general linear hypotheses in multiple parametric models.
+License: GPL-2
+Depends: sandwich
+Imports: Rcpp (>= 0.12.5)
+LinkingTo: Rcpp, RcppArmadillo

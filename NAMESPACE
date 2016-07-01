@@ -1,0 +1,4 @@
+useDynLib(mumocomp)
+import("sandwich")
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")
