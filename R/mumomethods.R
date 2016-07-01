@@ -1,7 +1,7 @@
 print.mumo <- function(x, digits= max(3, getOption("digits") - 3), ...){
   cat("\t Multiple Model Contrast Tests\n\n") 
   dd <- data.frame(Estimates=x$coefficients,
-                   Std.Err=sqrt(diag(x$vcov)),
+                   Std.Err=sqrt(diag(x$vcov)/x$N),
                    row.names=x$names)
   printCoefmat(dd, digits=digits, cs.ind=1:2, tst.ind=NULL)
 }
@@ -15,7 +15,7 @@ summary.mumo <- function(object, ...){
   
   cat("\t Multiple Model Contrast Tests\n\n") 
   dd <- data.frame(Estimate=object$coefficients,
-                   Std.Err=sqrt(diag(object$vcov)),
+                   Std.Err=sqrt(diag(object$vcov)/object$N),
                    Statistic=object$statistics,
                    pvalue=pv,
                    row.names=object$names)

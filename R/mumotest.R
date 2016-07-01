@@ -23,7 +23,8 @@ function(mlist, K, B){
               vcov=covar,
               statistics=stat,
               resamp=bs,
-              names=namek)
+              names=namek,
+              N=n)
   class(out) <- "mumo"
   return(out)
 }
