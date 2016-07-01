@@ -1,7 +1,7 @@
 \name{mumotest}
 \alias{mumotest}
-\title{Simultaneous Inference for parameters in Multiple Models}
-\description{Blah, blah, blah}
+\title{Simultaneous Inference for Parameters in Multiple Models}
+\description{Resampling-based testing of general linear hypotheses for parameters of multiple models}
 \usage{
 mumotest(mlist, K, B)
 }
