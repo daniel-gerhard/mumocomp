@@ -1,5 +1,7 @@
 mumotest <-
 function(mlist, K, B){
+  namek <- rownames(K)
+  if (is.null(namek)) namek <- paste("C", 1:nrow(K), sep="") 
   # number of obs (same for every model)
   n <- nrow(model.matrix(mlist[[1]]))
   # evaluate score functions using sandwich
@@ -16,10 +18,12 @@ function(mlist, K, B){
   stat <- est / (sqrt(diag(covar)) * (1/sqrt(n)))
   # resampling of test statistic
   bs <- cmr(psi, corr, n, K, B)
-  # maximum test statistics
-  bmax <- apply(bs, 1, function(x) max(abs(x)))
-  # adjusted p-values
-  alter <- sapply(stat, function(x) bmax > abs(x))
-  pv <- apply(alter, 2, function(x) (sum(x) + 1)/(length(x) + 1))
-  return(pv)
+
+  out <- list(coefficients=est,
+              vcov=covar,
+              statistics=stat,
+              resamp=bs,
+              names=namek)
+  class(out) <- "mumo"
+  return(out)
 }

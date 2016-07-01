@@ -1,4 +1,7 @@
 useDynLib(mumocomp)
+exportClasses("mumo")
 import("sandwich")
 importFrom(Rcpp, evalCpp)
 exportPattern("^[[:alpha:]]+")
+S3method(print, mumo)
+S3method(summary, mumo)
