@@ -1,4 +1,4 @@
-mumocomp <-
+mumotest <-
 function(mlist, K, B){
   # number of obs (same for every model)
   n <- nrow(model.matrix(mlist[[1]]))
