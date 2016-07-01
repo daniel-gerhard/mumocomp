@@ -24,7 +24,8 @@ summary.mumo <- function(object, digits= max(3, getOption("digits") - 3), ...){
 
 
 confint.mumo <- function(object, parm, level = 0.95, ...){
-  quant <- quantile(object$resamp, level)
+  bmax <- apply(object$resamp, 1, function(x) max(abs(x)))
+  quant <- quantile(bmax, level)
   upp <- object$coefficients + quant * sqrt(diag(object$vcov)/object$N) 
   low <- object$coefficients - quant * sqrt(diag(object$vcov)/object$N) 
   
