@@ -1,9 +1,9 @@
-\name{mumotest}
-\alias{mumotest}
+\name{mumocomp}
+\alias{mumocomp}
 \title{Simultaneous Inference for Parameters in Multiple Models}
 \description{Resampling-based testing of general linear hypotheses for parameters of multiple models}
 \usage{
-mumotest(mlist, K, B)
+mumocomp(mlist, K, B)
 }
 \arguments{
   \item{mlist}{List of model objects}
