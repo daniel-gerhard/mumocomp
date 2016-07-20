@@ -48,4 +48,4 @@ confint(mm)
 }
 
 \keyword{multivariate}
-\keyword{htes }% use one of  RShowDoc("KEYWORDS")
+\keyword{htest }% use one of  RShowDoc("KEYWORDS")

@@ -1,4 +1,4 @@
-print.mumo <- function(x, digits= max(3, getOption("digits") - 3), ...){
+print.mumo <- function(x, digits=max(3, getOption("digits") - 3), ...){
   cat("\t Multiple Model Contrast Tests\n\n") 
   dd <- data.frame(Estimates=x$coefficients,
                    Std.Err=sqrt(diag(x$vcov)/x$N),
@@ -6,7 +6,7 @@ print.mumo <- function(x, digits= max(3, getOption("digits") - 3), ...){
   printCoefmat(dd, digits=digits, cs.ind=1:2, tst.ind=NULL)
 }
 
-summary.mumo <- function(object, digits= max(3, getOption("digits") - 3), ...){
+summary.mumo <- function(object, digits=max(3, getOption("digits") - 3), ...){
   # maximum test statistics
   bmax <- apply(object$resamp, 1, function(x) max(abs(x)))
   # adjusted p-values
@@ -23,7 +23,7 @@ summary.mumo <- function(object, digits= max(3, getOption("digits") - 3), ...){
   return(out)
 }
 
-print.summary.mumo <- function(x, digits= max(3, getOption("digits") - 3), ...){
+print.summary.mumo <- function(x, digits=max(3, getOption("digits") - 3), ...){
   cat("\t Multiple Model Contrast Tests\n\n") 
   printCoefmat(x$results, digits=digits, cs.ind=1:2, tst.ind=3, has.Pvalue=TRUE) 
 }

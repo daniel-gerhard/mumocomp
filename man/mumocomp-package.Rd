@@ -19,10 +19,5 @@ The DESCRIPTION file:
 
 Maintainer: \packageMaintainer{mumocomp}
 }
-\references{
-}
+
 \keyword{ htest }
-\seealso{
-}
-\examples{
-}
