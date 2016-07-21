@@ -1,7 +1,7 @@
-mumotest <-
-function(mlist, K, B){
+mumotest <- function(mlist, K, B, margin=0){
   namek <- rownames(K)
   if (is.null(namek)) namek <- paste("C", 1:nrow(K), sep="") 
+  if (length(margin) == 1 & length(margin) < nrow(K)) margin <- rep(margin, each=nrow(K))
   # number of obs (same for every model)
   n <- nrow(model.matrix(mlist[[1]]))
   # evaluate score functions using sandwich
@@ -15,16 +15,17 @@ function(mlist, K, B){
   # covariance of parameter linear combinations
   covar <- K %*% covorig %*% t(K)
   # test statistic
-  stat <- est / (sqrt(diag(covar)) * (1/sqrt(n)))
+  stat <- (est - margin) / (sqrt(diag(covar)) * (1/sqrt(n)))
   # resampling of test statistic
-  bs <- cmr(psi, corr, n, K, B)
+  bs <- cmr(psi, corr, n, K, B, margin)
 
   out <- list(coefficients=est,
               vcov=covar,
               statistics=stat,
               resamp=bs,
               names=namek,
-              N=n)
+              N=n,
+              margin=margin)
   class(out) <- "mumo"
   return(out)
 }

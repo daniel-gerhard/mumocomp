@@ -3,12 +3,13 @@
 \title{Simultaneous Inference for Parameters in Multiple Models}
 \description{Resampling-based testing of general linear hypotheses for parameters of multiple models}
 \usage{
-mumotest(mlist, K, B)
+mumotest(mlist, K, B, margin=0)
 }
 \arguments{
   \item{mlist}{List of model objects}
   \item{K}{A contrast matrix (Number of columns = Number of coefficients in all models)}
   \item{B}{Number of iterations}
+  \item{margin}{Test margin}
 }
 
 \value{An object of class mumo}

@@ -3,7 +3,7 @@
 \title{Conditional Multiplier Resampling}
 \description{Multimodel resampling based on score functions}
 \usage{
-cmr(psi, X, n, K, reps)
+cmr(psi, X, n, K, reps, margin)
 }
 \arguments{
   \item{psi}{Matrix with evaluated scores}
@@ -11,6 +11,7 @@ cmr(psi, X, n, K, reps)
   \item{n}{Number of observations}
   \item{K}{Contrast matrix}
   \item{reps}{Number of resampling iterations}
+  \item{margin}{Vector of test margins}
 }
 
 \value{A matrix with test statistics}

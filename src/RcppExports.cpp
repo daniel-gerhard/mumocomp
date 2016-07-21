@@ -7,8 +7,8 @@
 using namespace Rcpp;
 
 // cmr
-arma::mat cmr(arma::mat psi, arma::mat X, int n, arma::mat K, int reps);
-RcppExport SEXP mumocomp_cmr(SEXP psiSEXP, SEXP XSEXP, SEXP nSEXP, SEXP KSEXP, SEXP repsSEXP) {
+arma::mat cmr(arma::mat psi, arma::mat X, int n, arma::mat K, int reps, arma::vec margin);
+RcppExport SEXP mumocomp_cmr(SEXP psiSEXP, SEXP XSEXP, SEXP nSEXP, SEXP KSEXP, SEXP repsSEXP, SEXP marginSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
@@ -17,7 +17,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type n(nSEXP);
     Rcpp::traits::input_parameter< arma::mat >::type K(KSEXP);
     Rcpp::traits::input_parameter< int >::type reps(repsSEXP);
-    __result = Rcpp::wrap(cmr(psi, X, n, K, reps));
+    Rcpp::traits::input_parameter< arma::vec >::type margin(marginSEXP);
+    __result = Rcpp::wrap(cmr(psi, X, n, K, reps, margin));
     return __result;
 END_RCPP
 }

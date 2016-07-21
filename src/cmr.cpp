@@ -5,7 +5,7 @@ using arma::mat;
 using arma::vec;
 
 // [[Rcpp::export]]
-arma::mat cmr(arma::mat psi, arma::mat X, int n, arma::mat K, int reps) {
+arma::mat cmr(arma::mat psi, arma::mat X, int n, arma::mat K, int reps, arma::vec margin) {
   RNGScope scope; // ensure RNG gets set/reset
   int nr = X.n_rows, nc = X.n_cols;
   
@@ -34,7 +34,7 @@ arma::mat cmr(arma::mat psi, arma::mat X, int n, arma::mat K, int reps) {
     mat Gpsi = trans(G % psi.t());
     vec est = K * Gpsi * arma::ones(n);
     mat covi = K * ((Gpsi * Gpsi.t()) / n) * K.t();
-    vec stati = (est / sqrt(n)) / sqrt(diagvec(covi));
+    vec stati = ((est - margin) / sqrt(n)) / sqrt(diagvec(covi));
     // store test statistics in output matrix
     for (int k = 0; k < nk; k++){
       stat(r,k) = stati(k);
